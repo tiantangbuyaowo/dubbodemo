@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.tj.dubbo.user.service.mapper.UserMapper">
+
+	<!-- 查询用户列表 -->
+	<select id="getUserList" resultType="User" parameterType="UserSeach">
+		SELECT
+		id,name,password
+		FROM tj_user where status = '1'
+
+	</select>
+
+	<!-- 插入新用户 -->
+	<insert id="addNewUser" parameterType="User">
+		INSERT INTO
+		tj_user(id,name,password,status)
+		VALUES(#{id},#{name},#{password},#{status})
+	</insert>
+
+	<!-- 根据id查询待插入的用户 -->
+	<select id="findInsertingUserById" parameterType="String"
+		resultType="User">
+		SELECT
+		id,name,password
+		FROM tj_user where status = '0' and
+		id = #{id}
+	</select>
+
+	<!-- 确认插入用户 -->
+	<update id="updateUserInsertStatus" parameterType="User">
+		UPDATE tj_user
+		SET status = #{status} WHERE id = #{id}
+	</update>
+
+	<!-- 删掉待插入的用户 -->
+	<delete id="deleteInsertingUser" parameterType="User">
+		DELETE FROM
+		tj_user
+		WHERE status = #{status} AND id = #{id}
+
+	</delete>
+
+</mapper>

@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.tj.dubbo.user.service.api</groupId>
+	<artifactId>tj-dubbo-user-service-api</artifactId>
+	<version>${project.parent.version}</version>
+
+	<parent>
+		<groupId>org.tj.dubbo.parent</groupId>
+		<artifactId>tj-dubbo</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.tj.dubbo.common</groupId>
+			<artifactId>tj-dubbo-common</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+
+
+	</dependencies>
+	<build>
+		<finalName>tj-dubbo-user-service-api</finalName>
+	</build>
+</project>

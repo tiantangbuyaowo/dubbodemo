@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.tj.dubbo.web</groupId>
+	<artifactId>tj-dubbo-web</artifactId>
+	<packaging>war</packaging>
+	<version>${project.parent.version}</version>
+	<name>tj-dubbo-web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>org.tj.dubbo.parent</groupId>
+		<artifactId>tj-dubbo</artifactId>
+		<version>0.0.1</version>
+	</parent>
+
+
+
+
+	<dependencies>
+
+		<!-- 用户操作服务 -->
+		<dependency>
+			<groupId>org.tj.dubbo.user.service.api</groupId>
+			<artifactId>tj-dubbo-user-service-api</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+
+		<!-- 金币操作服务 -->
+		<dependency>
+			<groupId>org.tj.dubbo.coin.service.api</groupId>
+			<artifactId>tj-dubbo-coin-service-api</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+
+
+
+	</dependencies>
+	<build>
+		<finalName>tj-dubbo-web</finalName>
+	</build>
+</project>

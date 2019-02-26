@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.tj.dubbo.message.service.mapper.MessageMapper">
+	<!-- 插入待发送的消息 -->
+	<insert id="addConfirmMessage" parameterType="Message">
+		INSERT INTO
+		tj_dubbo_message(id,messageid,status,messagebody,quenename)
+		VALUES(#{id},#{messageid},'0',#{messagebody},#{quenename})
+	</insert>
+
+	<!-- 根据id查询待发送消息 -->
+	<select id="getConfirmMessageById" parameterType="String"
+		resultType="Message">
+		SELECT id,messageid,status,messagebody,quenename FROM
+		tj_dubbo_message WHERE
+		id= #{id} AND status = '0'
+	</select>
+
+	<!--修改消息状态为发送中 -->
+	<update id="updateMessageToSendIng" parameterType="String">
+		UPDATE
+		tj_dubbo_message SET status = '1' WHERE id = #{id}
+	</update>
+
+	<!-- 删除消息 -->
+	<delete id="deleteSendIngMessage" parameterType="String">
+		DELETE FROM
+		tj_dubbo_message WHERE id = #{id}
+	</delete>
+
+</mapper>

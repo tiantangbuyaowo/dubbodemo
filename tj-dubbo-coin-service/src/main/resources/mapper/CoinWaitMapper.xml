@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.tj.dubbo.coin.service.mapper.CoinWaitMapper">
+
+	<!-- 根据id查询待插入金币 -->
+	<select id="findCoinWaitById" resultType="CoinWait"
+		parameterType="String">
+		SELECT
+		id,num,type,userid,submitstatus
+		FROM tj_coin_wait
+		where id = #{id}
+
+	</select>
+
+	<!-- 根据id查询待插入金币且状态为0的 -->
+	<select id="findCoinWaitingById" resultType="CoinWait"
+		parameterType="String">
+		SELECT
+		id,num,type,userid,submitstatus
+		FROM tj_coin_wait
+		where id = #{id} and submitstatus = '0'
+
+	</select>
+
+
+	<!-- 根据用户id查询该用户的注册金币记录数 -->
+	<select id="findUserRegisterWaitCoin" parameterType="String"
+		resultType="CoinWait">
+		SELECT
+		id,num,type,userid,submitstatus
+		FROM tj_coin_wait
+		where userid = #{userid} AND type = '0'
+	</select>
+
+	<!-- 插入待插入积分 -->
+	<insert id="addNewWaitCoin" parameterType="CoinWait">
+		INSERT INTO
+		tj_coin_wait(id,num,type,userid,submitstatus)
+		VALUES(#{id},#{num},#{type},#{userid},#{submitstatus})
+	</insert>
+
+	<!-- 改变插入金币的操作状态 -->
+	<update id="updateCoinWaitSubmitStatus" parameterType="CoinWait">
+		UPDATE
+		tj_coin_wait SET submitstatus =#{submitstatus} WHERE id = #{id}
+	</update>
+
+
+</mapper>
